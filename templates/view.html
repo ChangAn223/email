@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+邮箱|信件
+{% endblock %}
+
+{%block newbody%}
+
+<div class="col-lg-7  index-body-center">
+    <div class="panel panel-default panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-pencil"></span>
+                邮件内容</h3>
+        </div>
+        <div class="panel-body">
+            <span style="font-size: x-small;color: #204d74;"><b>发件人： </b></span>
+            <div style="padding-top: 5px;padding-bottom: 5px;border: 2px solid #bce8f1">
+                <span class="write-title">{{ email.send_man }}</span>
+            </div>
+            <span style="font-size: x-small;color: #204d74;"><b>邮件主题： </b></span>
+            <div style="padding-top: 5px;padding-bottom: 5px;border: 2px solid #bce8f1">
+                <sapn class="write-title">{{ email.theme }}</sapn>
+            </div>
+            <span style="font-size: x-small;color: #204d74;"><b>内容： </b></span><br>
+            <div style="padding-top: 5px;padding-bottom: 5px;border: 2px solid #bce8f1">
+                <br><span class="content">{{ email.content }}</span><br><br>
+            </div>
+            {% if email.attachment %}
+            <span style="font-size: x-small;color: #204d74;"><b>附件： </b></span><span
+                style="font-size: xx-small;color: lightslategrey;"></span><br>
+            <div class="file-box">
+                <span><b>附件：</b></span>
+                <span style="background-color: #bce8f1;">{{ email.attachment }}</span>
+                <a style="margin-left: 5px;" href="/static/files/{{ email.attachment }}" download>下载附件</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <!--</div>-->
+    <div style="width: 100%;height: 200px;">
+    <span style="float: left;margin-left: 20px;">
+        <form action="/email/delete/{{ email.id }}" method="POST">
+        <input class="btn btn-sm btn-danger" style="width: 80px;height: 35px;font-size: x-small;" type="submit"
+               value="删 除">
+        </form>
+    </span>
+        <span style="float: left;padding-left: 20px;font-size: x-small;">
+    <form action="/email/move/{{ email.id }}" method="POST">
+    <input class="btn btn-sm btn-success" style="width: 80px;height: 35px;font-size: x-small;" type="submit"
+           value="移动到">
+    <select class="btn btn-default" style="width: 160px;height: 35px;padding-left: 20px;font-size: x-small;"
+            name="choice">
+        {% for folder in folders%}
+        <option value="{{ folder.id }}">{{ folder.name }}</option>
+        {% endfor %}
+    </select>
+    </form>
+    </span>
+    </div>
+</div>
+<div class="col-lg-3 index-body-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="查找联系人">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">搜索</button>
+                  </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <br>
+    <div class="list-group">
+        <a href="#" class="list-group-item active">联系人</a>
+        <a href="#" class="list-group-item">纳兰容若<span style="color: grey;float: right;padding-right: 8px;">(aaaaaaaa@qq.com)</span></a>
+        <a href="#" class="list-group-item">曹雪芹<span style="color: grey;float: right;padding-right: 8px;">(bbbaaaaaaaa@vip.qq.com)</span></a>
+        <a href="#" class="list-group-item">屈原<span style="color: grey;float: right;padding-right: 8px;">(aacaaaaaa@qq.com)</span></a>
+        <a href="#" class="list-group-item">李白<span style="color: grey;float: right;padding-right: 8px;">(adaaaa@136.com)</span></a>
+        <a href="#" class="list-group-item">杜甫<span style="color: grey;float: right;padding-right: 8px;">(ddaaaaaa@qq.com)</span></a>
+        <a href="#" class="list-group-item">......</a>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+邮箱|写信
+{% endblock %}
+
+{%block newbody%}
+
+<div class="col-lg-7  index-body-center">
+    <div class="panel panel-default panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-pencil"></span>
+                写邮件</h3>
+        </div>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        <div class="panel-body">
+            <form action="{{url_for('write')}}" method="post" enctype="multipart/form-data">
+                <span style="font-size: xx-small;">邮件主题： </span><br>
+                <input class="write-title" type="text" name="theme"><br>
+                <span style="font-size: xx-small;">收件人： </span><br>
+                <input class="sendto" type="text" name="sendto"><br>
+
+                <span style="font-size: xx-small;">添加附件： </span><span
+                    style="font-size: xx-small;color: lightslategrey;">（可以不加附件）</span>
+                <div class="file-box">
+                    <input type='text' name='textfield' id='textfield' class='txt comm'/>
+                    <input type='button' class='btn comm' value='浏览...'/>
+                    <input type="file" name="file" class="file comm" size="28"
+                           onchange="document.getElementById('textfield').value=this.value"/>
+                </div>
+
+                <span style="font-size: xx-small;">内容： </span><br>
+                <textarea class="content" name="content"></textarea><br>
+                <input class="btn btn-lg btn-success" style="width: 80px;height: 35px;font-size: x-small;" type="submit" value="发 送">
+                <input class="btn btn-lg btn-success" style="width: 80px;height: 35px;font-size: x-small;" type="submit" value="保 存">
+                <input class="btn btn-lg btn-warning" style="width: 80px;height: 35px;font-size: x-small;" type="reset" value="撤 销">
+            </form>
+        </div>
+    </div>
+    <br><br><br>
+    <!--</div>-->
+</div>
+<div class="col-lg-3 index-body-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="查找联系人">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">搜索</button>
+                  </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <br>
+    <div class="list-group">
+        <a href="#" class="list-group-item active"> 最近联系 </a>
+        {% for man in recent_linkmans %}
+        <a href="#" class="list-group-item">{{ man.remark }} ({{ man.email }})</a>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

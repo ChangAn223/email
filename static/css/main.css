@@ -1,0 +1,184 @@
+
+.header{
+    height: 80px;
+    background-color: #F8F8F8;
+}
+.header-left{
+    width: 100%;
+    height: 80px;
+}
+.header-left img{
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+}
+.header-left a{
+    text-decoration: none;
+    font-size: large;
+    color: slateblue;
+}
+.header-right{
+    width: 220px;
+    margin: auto 0;
+    float: right;
+
+}
+.body{
+    width: 100%;
+    height: 655px;
+}
+.img{
+    width: 400px;
+    float: left;
+    padding-left: 260px;
+    padding-top: 40px;
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+}
+.body-login{
+    width: 440px;
+    height: 460px;
+    border: 1.5px solid silver;
+    border-radius: 12px;
+    float: right;
+    margin-top: 60px;
+    margin-right: 180px;
+}
+.login-top{
+    width: 100%;
+    height: 45px;
+
+}
+.login-top a{
+    text-decoration: none;
+    color: royalblue;
+    font-size: 34px;
+}
+.login-top a:hover {
+    color: #5bc0de;
+}
+.login-top-left{
+    width: 48%;
+    height: 100%;
+    text-align: right;
+    float: left;
+    font-size: small;
+    padding-top: 12px;
+}
+.login-top-right{
+    width: 48%;
+    height: 100%;
+    text-align: left;
+    float: right;
+    font-size: small;
+    padding-top: 12px;
+}
+.info{
+    width: 86%;
+    height: 55px;
+    margin-top: 5px;
+    margin-left: 7%;
+    font-size: small;
+}
+.login-body1{
+    text-align: center;
+    display: none;
+}
+.login-body1 a{
+    text-decoration: none;
+    width: 170px;
+    height: 20px;
+    color: grey;
+    background-color: ghostwhite;
+    font-size: x-small;
+    border-radius: 2px;
+}
+.login-body1 a:hover{
+    background-color: gainsboro;
+}
+.login-body2{
+    display: block;
+}
+.login-button{
+    width: 86%;
+    height: 55px;
+    margin-top: 15px;
+    margin-left: 7%;
+    background-color: #269abc;
+    font-size: large;
+    color: snow;
+    border-radius: 6px;
+}
+.login-button:hover{
+    background-color: royalblue;
+}
+.register-box{
+    margin-top: 15px;
+    width: 36%;
+
+    border: 1px solid silver;
+    border-radius: 10px;
+}
+.register-size{
+    height: 50px;
+    font-size: x-small;
+}
+.index-body-left{
+    padding-top: 10px;
+    padding-left: 5px;
+}
+.index-body-left-top{
+    height: 55px;
+    margin-top: 4px;
+    padding-top: 6px;
+    padding-left:7px;
+    background-color: snow;
+}
+.index-body-center{
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+.comm{ vertical-align:middle; margin:0; padding:0}
+.file-box{ position:relative;width:540px;margin-top: 6px;margin-left: 20px;margin-bottom: 10px;font-size:14px;}
+.txt{ height:26px; border:1px solid lightslategray; width:280px;}
+.btn{ background-color:#FFF; border:1px solid lightslategray;height:26px; width:70px;}
+.file{ position:absolute; top:0; right:80px; height:26px; filter:alpha(opacity:0);opacity: 0;width:540px }
+.write-title{
+    height: 30px;
+    width: 800px;
+    font-size: x-small;
+    margin-top: 6px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.sendto{
+    height: 30px;
+    width: 800px;
+    font-size: xx-small;
+    margin-top: 6px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.content{
+    height: 400px;
+    width: 800px;
+    font-size: x-small;
+    margin-top: 6px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.sendbutton{
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 150px;
+    border-radius: 6px;
+    color: white;
+    box-shadow: none;
+    background-color: royalblue;
+}
+.sendbutton:hover{
+    background-color: dodgerblue;
+}

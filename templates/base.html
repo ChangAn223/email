@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/main.js"></script>
+    <script src="/static/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-left">
+            <div style="width: 50px;height:100%;float: left;">
+                <img src="/static/img/mail.png" alt="邮箱图标">
+            </div>
+            <div style="width: 100%;height:100%;padding-left: 80px;">
+                <a style="text-decoration-line: none;" href="/">长 邮<br>安 箱</a>
+                <span></span>
+                {% if 'nickname' in session %}
+                <a style="float: right;font-size: x-small;padding-right: 5px;text-decoration-line: none;" href="/logout"><span class="glyphicon glyphicon-log-out"></span>注销</a>
+                <a style="float: right;font-size: x-small;padding-right: 20px;text-decoration-line: none;" href="/zone"><span class="glyphicon glyphicon-user"></span>{{ session['nickname'] }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% block body %}
+        <div class="body">
+            <div class="col-lg-2 index-body-left">
+                <div class="index-body-left-top" style="width: 250px;font-size: x-small;">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation"><a href="/write">写信</a></li>
+                        <li role="presentation"><a href="/zone">个人</a></li>
+                        <li role="presentation"><a href="/">收信</a></li>
+                    </ul>
+                </div>
+                <div class="list-group" style="padding-top: 20px;">
+                    <div  style="margin-bottom:0px;padding-bottom:0px;border-radius: 0px;" class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div style="background-color: white;" class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a style="text-decoration: none;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                     <span class="glyphicon glyphicon-folder-open"></span>
+                                        收件夹
+                                                                            <!-- 按钮触发模态框 -->
+                                    <a href="#" style="float: right;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span></a>
+                                    <!-- 模态框（Modal） -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="myModalLabel">添加收件夹</h4>
+                                                </div>
+                                                <form action="{{url_for('add_folder')}}" method="POST">
+                                                    <div class="modal-body">
+                                                        <input type="text" name="foldername">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                                                        <button type="submit" class="btn btn-sm btn-primary">提交</button>
+                                                    </div>
+                                                </form>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal -->
+                                    </div>
+
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    {% for folder in folders%}
+                                    <form action="/folder/delete/{{folder.id}}" method="post">
+                                    <span class="list-group-item">
+                                        <a style="text-decoration: none;" href="/email/{{folder.name}}">{{ folder.name }}</a>
+                                        <button style="float: right;border: none;border-bottom-color: #FFF;" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+                                    </span>
+                                    </form>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/linkman" class="list-group-item">
+                        <span class="glyphicon glyphicon-book"></span>
+                        联系人</a>
+                    <a href="/task" class="list-group-item">
+                        <span class="glyphicon glyphicon-file"></span>
+                        记事本</a>
+                    <a href="/draft" class="list-group-item">
+                        <span class="glyphicon glyphicon-folder-close"></span>
+                        草稿箱</a>
+                </div>
+            </div>
+
+        {%  block newbody %}
+
+        {% endblock %}
+</div>
+    {% endblock %}
+
+
+
+</body>
+</html>

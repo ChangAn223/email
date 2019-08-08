@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{%block title%}
+邮箱|联系人
+{%endblock%}
+
+{%block newbody%}
+
+<div class="col-lg-7 index-body-center">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="{{ url_for('linkman') }}">联系人列表</a></li>
+                <li role="presentation" class="active"><a href="{{ url_for('add_linkman') }}">添加联系人</a></li>
+            </ul>
+
+            <div class="panel panel-default panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-plus-sign"></span>
+                        添加联系人</h3>
+                </div>
+                <div class="panel-body">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+
+                    {{ wtf.quick_form(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-3 index-body-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入关键字">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">搜索</button>
+                  </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <br>
+    <div class="list-group">
+        <a href="#" class="list-group-item active"> 最近联系 </a>
+        {% for man in recent_linkmans %}
+        <a href="#" class="list-group-item">{{ man.remark }} ({{ man.email }})</a>
+        {% endfor %}
+    </div>
+
+</div>
+
+{%endblock%}

@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+
+{%block title%}
+邮箱登陆
+{%endblock%}
+
+{%block body%}
+
+<div class="body">
+    <div class="img">
+        <img width="500" height="500" src="../static/img/image1.jpg" id="img">
+    </div>
+    <div class="body-login">
+        <div class="login-top">
+            <div class="login-top-left"><a style="text-decoration-line: none;" href="javascript:void(0);" onclick="login1();">快速登陆</a></div>
+            <div style="font-size: 32px;color: silver;width: 4%;height: 100%;padding-top: 8px;float: left;text-align: center;">|</div>
+            <div class="login-top-right"><a style="text-decoration-line: none;" href="javascript:void(0);" onclick="login2();">帐号登陆</a></div>
+        </div>
+        <hr>
+
+        <div class="login-body1" id="login1">
+            <span style="font-size: x-small;">扫二维码安全登陆</span>
+            <div style="width: 280px;height: 280px;margin: 0 auto;border: 1px solid dodgerblue;">
+                <img style="width: 270px;height: 270px;" src="../static/img/qrcode.png" alt="二维码">
+            </div>
+            <a style="text-decoration-line: none;" href="#">使用手机QQ扫描登陆</a>
+        </div>
+
+        <div class="login-body2" id="login2">
+            <span style="font-size: x-small;color: red;margin-left: 36px;">{{ message }}</span>
+            <form action="/login.html" method="POST">
+                <input class="info" type="text" name="email" placeholder="请输入邮箱帐号">
+                <input class="info" style="margin-top: 28px;" type="password" name="passwd" placeholder="请输入邮箱密码">
+                <input type="checkbox" value="true" name="choice" value="1" style="margin-left: 7%;margin-top: 20px">
+                <span style="font-size: xx-small;margin-top: 20px;">记住帐号</span>
+                <input class="login-button" type="submit" id="login" value="登陆">
+            </form>
+
+            <div style="margin-top: 10px;" >
+                <a style="margin-left: 38px;font-size: x-small;text-decoration-line: none;" href="#">忘记密码？</a>
+                <a style="float: right;margin-right: 38px;font-size: x-small;text-decoration-line: none;" href="register.html">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{%block title%}
+邮箱|个人中心
+{%endblock%}
+
+{%block newbody%}
+
+<div class="col-lg-8 index-body-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="{{ url_for('zone') }}">个人信息</a></li>
+                <li role="presentation"><a href="{{ url_for('passwd') }}">修改密码</a></li>
+            </ul>
+
+            <div class="panel panel-default panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span>
+                        查看个人信息</h3>
+                </div>
+                <div class="panel-body">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+
+                    {{ wtf.quick_form(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{%endblock%}

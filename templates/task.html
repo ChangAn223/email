@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{%block title%}
+邮箱|备忘录
+{%endblock%}
+{% block newbody %}
+<div class="col-lg-7 index-body-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-horizontal" action="/task/add/" method="POST">
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="事件" required="required"
+                               name="todo_name">
+                    </div>
+                        <input type="submit" class="btn btn-sm btn-success" style="font-size: x-small;height: 34px;" value="添 加">
+                </div>
+            </form>
+
+            <div class="panel panel-default panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span>
+                        事件列表</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered" style="text-align: center;">
+                        <tr>
+                            <td style="width: 60px;">编号</td>
+                            <td>内容</td>
+                            <td style="width: 180px;">创建时间</td>
+                            <td style="width: 100px;">状态</td>
+                            <td style="width: 100px;">操作</td>
+                        </tr>
+                        {% for todo in todos.items %}
+                        <tr>
+                            <td>{{ todo.id }}</td>
+                            <td>{{ todo.name }}</td>
+                            <td>{{ todo.add_time }}</td>
+                            <td>
+                                {% if todo.status %}
+                                <a href="/task/change/{{  todo.id }}" class="btn btn-sm btn-success"
+                                   role="button">已完成</a>
+
+                                {% else %}
+                                <a href="/task/change/{{  todo.id }}" class="btn btn-sm btn-warning"
+                                   role="button">未完成</a>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="/task/delete/{{  todo.id }}" class="btn btn-sm btn-danger"
+                                   role="button"><span class="glyphicon glyphicon-remove"></span>删除</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            {% from 'macro_page.html' import paginate %}
+            {{ paginate('task_list', todos) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

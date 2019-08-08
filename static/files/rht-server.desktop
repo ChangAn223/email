@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=View Server
+GenericName=View Server
+X-GNOME-FullName=Server VM
+Exec=rht-vmctl --gui viewstart server
+Terminal=false
+Icon=fedora-logo-sprite
+Type=Application
+StartupNotify=true
+Categories=GTK;GNOME;Utility;Accessibility;
+Name[en_US]=View Server

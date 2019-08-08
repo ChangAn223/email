@@ -1,0 +1,36 @@
+{% macro paginate(view_func, todos) %}
+    {#    todos 就是views函数中传递过来的Paginate实例化的查询结果对象：
+            todos = Todos.query.paginate(page, 5)；page表示显示的是第几页#}
+    <ul class="pagination" style="margin-top: 0px">
+
+        {#  判断是否有上一页， #}
+        {% if todos.has_prev %}
+            <li><a href="{{ url_for(view_func, page=todos.prev_num) }}">前一页</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">前一页</a></li>
+        {% endif %}
+
+        {#   根据从数据库中查询的数据， 来确定分页的个数， 使用for循环   #}
+        {#  返回一个迭代器， 如果有100页， 薄嗯不会返回100个数字， 而是1 2 。。。。 99 100        #}
+        {% for page in todos.iter_pages(right_current=2) %}
+            {# page: 要生成html代码的页数小标签块，  todos.page： 用户希望显示数据的页数            #}
+            {% if page == todos.page %}
+                <li class="active"><a href={{ url_for(view_func, page=page) }}>{{ page }}
+                </a></li>
+            {% elif page == None %}
+                <li class="disabled"><a href={{ url_for(view_func, page=1) }}>...</a></li>
+            {% else %}
+                <li><a href={{ url_for(view_func, page=page) }}>{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {#        100     1 2 3 ....  100#}
+
+        {#        判断是否有下一页， #}
+        {% if todos.has_next %}
+            <li><a href="{{ url_for(view_func, page=todos.next_num) }}">后一页</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">后一页</a></li>
+        {% endif %}
+
+    </ul><br>
+{% endmacro %}
