@@ -432,6 +432,3 @@ def task_change(id):
     # 更新状态后， 返回任务列表页
     return redirect(url_for('task_list'))
 
-
-if __name__ == '__main__':
-    app.run()
