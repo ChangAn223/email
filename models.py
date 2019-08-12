@@ -101,8 +101,8 @@ class UserLog(db.Model):
         return '<Login_ip：%s>' % self.ip
 
 
-if __name__ == "__main__":
-    db.create_all()
+    # if __name__ == "__main__":
+    #     db.create_all()
     # my = User(nickname='长安223',email='admin',passwd='admin',phone='11111111111',sign='在下就是传说中的管理员')
     # db.session.add(my)
     # db.session.commit()
