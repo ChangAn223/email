@@ -5,3 +5,4 @@ flask_migrate
 flask_script
 flask_wtf
 wtforms
+pymysql
