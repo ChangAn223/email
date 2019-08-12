@@ -46,5 +46,5 @@ manager.add_command('db',MigrateCommand)
 #     else:
 #         print("创建管理员 %s 成功！" %name)
 
-if __name__ == "__main__":
-    manager.run()
+# if __name__ == "__main__":
+#     manager.run()
